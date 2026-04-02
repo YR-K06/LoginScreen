@@ -35,7 +35,7 @@ namespace LoginScreen
             {
                 txtPW.Text = "";
                 txtPW.ForeColor = Color.Black;
-           //
+                txtPW.UseSystemPasswordChar = true;
             }
         }
         // PW 입력란에서 포커스가 벗어날 때 내용이 비어있으면 원래 문구를 다시 표시
@@ -43,7 +43,7 @@ namespace LoginScreen
         {
             if (string.IsNullOrWhiteSpace(txtPW.Text))
             {
-             //
+                txtPW.UseSystemPasswordChar = false;
                 txtPW.Text = "패스워드";
                 txtPW.ForeColor = Color.Silver;
             }
@@ -59,10 +59,12 @@ namespace LoginScreen
             if (inputID == myID && inputPW == myPW)
             {
                 MessageBox.Show("로그인 성공!","로그인",MessageBoxButtons.OK);
+                lblErrorMsg.Visible = false;
             }
             else
             {
-                MessageBox.Show("로그인 실패~","로그인",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MesszgeBox.Show("로그인 실패~");
+                lblErrorMsg.Visible = true;
             }
         }
     }
